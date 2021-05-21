@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Hike(models.Model):
-    name = models.CharField(max_length = 50)
+    name = models.CharField(max_length = 50, unique=True)
     location = models.CharField(max_length = 50)
     state = models.CharField(max_length = 2)
     description = models.TextField()

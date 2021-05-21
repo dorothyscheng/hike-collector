@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>All Hikes</h1>
+<div>
+    {% for hike in hikes %}
+        <a href="/hikes/{{ hike.id }}">
+            <div>
+                <span>{{ hike.name }}</span>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}
