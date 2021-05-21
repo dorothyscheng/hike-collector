@@ -1,3 +1,44 @@
+/* RESET */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
 body {
-    background-color: aqua;
+    position: relative;
+    min-height: 100vh;
+}
+main {
+    padding-bottom: 2.5rem;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    background-color: #000080;
+    color: #fff;
+}
+a {
+    text-decoration: none;
+}
+/* NAV */
+.nav {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 0;
+    background-color: #000080;
+    margin-bottom: 30px;
+}
+.side-nav {
+    width: 25%;
+    text-align: center;
+}
+.nav-link {
+    color: #fff;
+}
+/* HOME */
+.title {
+    text-align: center;
 }

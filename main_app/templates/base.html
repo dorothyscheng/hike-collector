@@ -5,16 +5,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} Google Font {% endcomment %}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    {% comment %} Main CSS {% endcomment %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Hike Collector</title>
 </head>
 <body>
-    <nav>
-        <a href="{% url 'hikes:index' %}">Explore</a>
-        <a href="{% url 'hikes:home' %}"><h3>HikeCollector</h3></a>
-    </nav>
-    {% block content %}
-    {% endblock %}
+    <main>
+        <nav class="nav">
+            <div class="side-nav">
+                <a class="nav-link" href="{% url 'hikes:index' %}">Explore</a>
+            </div>
+            <div class="center-nav">
+                <a class="nav-link" href="{% url 'hikes:home' %}"><h2>HikeCollector</h2></a>
+            </div>
+            <div class="side-nav">
+                <a class="nav-link" href="/">Coming soon: profile link</a>
+            </div>
+        </nav>
+        {% block content %}
+        {% endblock %}
+    </main>
     <footer>Some footer content</footer>
 </body>
 </html>
