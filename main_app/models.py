@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Hike(models.Model):
@@ -22,3 +23,5 @@ class Hike(models.Model):
     difficulty = models.CharField(max_length=1, choices=DIFFICULTY_CHOICES)
     def __str__(self):
         return self.name
+    def get_absolute_url(self):
+        return reverse('hikes:detail', kwargs={'hike_id': self.pk})

@@ -1,3 +1,7 @@
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+
+
 from django.shortcuts import render, get_object_or_404
 from .models import Hike
 
@@ -12,3 +16,8 @@ def index(request):
 def detail(request, hike_id):
     selected_hike = get_object_or_404(Hike, pk=hike_id)
     return render(request, 'hikes/detail.html', {'selected': selected_hike})
+
+class HikeCreateView(CreateView):
+    model = Hike
+    fields = ['name', 'location', 'state', 'description', 'length', 'elevation_gain', 'route_type', 'difficulty']
+    template_name = 'hikes/hike_form.html'

@@ -34,6 +34,8 @@ a {
 .side-nav {
     width: 25%;
     text-align: center;
+    display: flex;
+    justify-content: space-evenly;
 }
 .nav-link {
     color: #fff;
@@ -42,6 +44,7 @@ a {
 /* HOME */
 .title {
     text-align: center;
+    margin-bottom: 20px;
 }
 /* INDEX */
 .hikes-container {
@@ -56,8 +59,8 @@ a {
     border: 2px solid #00003f;
     border-radius: 5px;
     padding: 20px;
-    font-size: 20px;
-    margin: 20px 0;
+    font-size: 16px;
+    margin: 5px 0;
     transition: background-color .5s;
 }
 .hike-card:hover {
@@ -70,6 +73,8 @@ a {
 }
 .hike-link {
     color: #00003f;
+    margin: 5px 0;
+    border: 2px solid transparent;
 }
 .hike-link:hover {
     color: #fff;
@@ -98,7 +103,7 @@ a {
     font-size: 20px;
 }
 .hike-detail-stats {
-    width: 24%;
+    width: 40%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -114,4 +119,13 @@ a {
 }
 .description {
     line-height: 39px;
+}
+/* FORM */
+.hike-form {
+    width: 30%;
+    margin: 0 auto;
+    text-align: right;
+    line-height: 30px;
+    font-weight: bold;
+    font-size: 16px;
 }
