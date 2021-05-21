@@ -21,3 +21,8 @@ class HikeCreateView(CreateView):
     model = Hike
     fields = ['name', 'location', 'state', 'description', 'length', 'elevation_gain', 'route_type', 'difficulty']
     template_name = 'hikes/hike_form.html'
+
+class HikeUpdateView(UpdateView):
+    model = Hike
+    fields = ['name', 'location', 'state', 'description', 'length', 'elevation_gain', 'route_type', 'difficulty']
+    template_name = 'hikes/hike_form.html'
