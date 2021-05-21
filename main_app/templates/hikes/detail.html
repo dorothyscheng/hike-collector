@@ -7,8 +7,14 @@
         <p>{{ selected.location }}, {{ selected.state }}</p>
     </div>
     <div class="hike-detail-stats">
-        <p>{{ selected.length }} miles</p>
-        <p>{{ selected.get_route_type_display }}</p>
+        <div class="detail-item">
+            <span class="detail-title">Round trip distance:</span>
+            <p>{{ selected.length }} miles</p>
+        </div>
+        <div class="detail-item">
+            <span class="detail-title">Route type:</span>
+            <p>{{ selected.get_route_type_display }}</p>
+        </div>
         <p class="difficulty {{ selected.get_difficulty_display }}"> {{ selected.get_difficulty_display }}</p>
     </div>
     <p class="description">{{ selected.description }}</p>

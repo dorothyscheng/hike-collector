@@ -8,7 +8,10 @@
                 <h3>{{ hike.name }}</h3>
                 <p>{{ hike.location }}, {{ hike.state }}</p>
                 <div class="hike-stats">
-                    <p>{{ hike.length }} miles</p>
+                    <div class="hike-distance">
+                        <p>{{ hike.length }} miles</p>
+                        <p>{{ hike.get_route_type_display }}</p>
+                    </div>
                     <p class="difficulty {{ hike.get_difficulty_display }}"> {{ hike.get_difficulty_display }}</p>
                 </div>
             </div>

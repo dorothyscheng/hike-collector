@@ -66,6 +66,7 @@ a {
 .hike-stats {
     display: flex;
     justify-content: space-between;
+    margin-top: 5px;
 }
 .hike-link {
     color: #00003f;
@@ -97,11 +98,19 @@ a {
     font-size: 20px;
 }
 .hike-detail-stats {
-    width: 21%;
+    width: 24%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 10px 0;
+}
+.detail-item {
+    display: flex;
+    flex-direction: column;
+}
+.detail-title {
+    font-size: 14px;
+    font-style: italic;
 }
 .description {
     line-height: 39px;
