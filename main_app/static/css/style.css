@@ -37,8 +37,54 @@ a {
 }
 .nav-link {
     color: #fff;
+    font-size: 20px;
 }
 /* HOME */
 .title {
     text-align: center;
+}
+/* INDEX */
+.hikes-container {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: space-between;
+}
+.hike-card {
+    border: 2px solid #00003f;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 20px;
+    margin: 20px 0;
+    transition: background-color .5s;
+}
+.hike-card:hover {
+    background-color: #00003f;
+}
+.hike-stats {
+    display: flex;
+    justify-content: space-between;
+}
+.hike-link {
+    color: #00003f;
+}
+.hike-link:hover {
+    color: #fff;
+}
+.difficulty {
+    padding: 5px;
+    color: #fff;
+    border-radius: 5px;
+    border: 3px solid #fff;
+}
+.Easy {
+    background-color: #0e6b0e;
+}
+.Moderate {
+    background-color: #ffa500;
+}
+.Hard {
+    background-color: #000;
 }
