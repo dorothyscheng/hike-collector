@@ -14,8 +14,11 @@ class Hike(models.Model):
         ('PP', 'Point to point'),
     )
     route_type = models.CharField(max_length = 2, choices = ROUTE_TYPE_CHOICES)
-    DIFFICULT_CHOICES = (
+    DIFFICULTY_CHOICES = (
         ('E', 'Easy'),
         ('M', 'Moderate'),
         ('H', 'Hard'),
     )
+    difficulty = models.CharField(max_length=1, choices=DIFFICULTY_CHOICES)
+    def __str__(self):
+        return self.name
