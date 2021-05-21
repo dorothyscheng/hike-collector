@@ -10,10 +10,8 @@
 </head>
 <body>
     <nav>
-        <ul>
-            <li><a href="{% url 'hikes:home' %}">HikeCollector</a></li>
-            <li><a href="/hikes">All Hikes</a></li>
-        </ul>
+        <a href="{% url 'hikes:index' %}">Explore</a>
+        <a href="{% url 'hikes:home' %}"><h3>HikeCollector</h3></a>
     </nav>
     {% block content %}
     {% endblock %}

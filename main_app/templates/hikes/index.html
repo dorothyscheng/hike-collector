@@ -4,9 +4,12 @@
 <h1>All Hikes</h1>
 <div>
     {% for hike in hikes %}
-        <a href="/hikes/{{ hike.id }}">
+        <a href="{% url 'hikes:detail' hike.id %}">
             <div>
                 <span>{{ hike.name }}</span>
+                <p>{{ hike.location }}, {{ hike.state }}</p>
+                <p>{{ hike.length }} miles</p>
+                <p class="difficulty {{ hike.get_difficulty_display }}"> {{ hike.get_difficulty_display }}</p>
             </div>
         </a>
     {% endfor %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ selected.name }}</h1>
+<div>
+    <p>{{ selected.location }}, {{ selected.state }}</p>
+    <p>{{ selected.length }} miles</p>
+    <p class="difficulty {{ selected.get_difficulty_display }}"> {{ selected.get_difficulty_display }}</p>
+    <p>{{ selected.route_type }}</p>
+</div>
+<p>{{ selected.description }}</p>
+{% endblock %}
