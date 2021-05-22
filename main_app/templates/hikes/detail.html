@@ -18,6 +18,7 @@
         <p class="difficulty {{ selected.get_difficulty_display }}"> {{ selected.get_difficulty_display }}</p>
     </div>
     <p class="description">{{ selected.description }}</p>
-    <a href="/hikes/{{ selected.id }}/update">Edit this hike</a>
+    <a href="{% url 'hikes:update' selected.id %}">Edit this hike</a>
+    <a href="{% url 'hikes:delete' selected.id %}">Delete this hike</a>
 </div>
 {% endblock %}

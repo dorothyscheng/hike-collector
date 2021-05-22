@@ -26,3 +26,8 @@ class HikeUpdateView(UpdateView):
     model = Hike
     fields = ['name', 'location', 'state', 'description', 'length', 'elevation_gain', 'route_type', 'difficulty']
     template_name = 'hikes/hike_form.html'
+
+class HikeDeleteView(DeleteView):
+    model = Hike
+    template_name = 'hikes/delete.html'
+    success_url = '/hikes'
