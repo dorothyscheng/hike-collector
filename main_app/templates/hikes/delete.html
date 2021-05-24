@@ -6,7 +6,7 @@
     <a class="action-button" href="{% url 'hikes:detail' object.id %}">Cancel</a>
     <form method="POST">
         {% csrf_token %}
-        <input class="delete-confirm action-button" type="submit" value="Delete">
+        <input class="delete action-button" type="submit" value="Delete">
     </form>
 </div>
 {% endblock %}

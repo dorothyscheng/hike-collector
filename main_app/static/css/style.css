@@ -56,17 +56,6 @@ a {
     justify-content: space-between;
     align-items: space-between;
 }
-.hike-card {
-    border: 2px solid #00003f;
-    border-radius: 5px;
-    padding: 20px;
-    font-size: 16px;
-    margin: 5px 0;
-    transition: background-color .5s;
-}
-.hike-card:hover {
-    background-color: #00003f;
-}
 .hike-stats {
     display: flex;
     justify-content: space-between;
@@ -75,10 +64,15 @@ a {
 .hike-link {
     color: #00003f;
     margin: 5px 0;
-    border: 2px solid transparent;
+    border: 2px solid #00003f;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 20px;
+    margin: 5px 0;
 }
 .hike-link:hover {
     color: #fff;
+    background-color: #00003f;
 }
 .difficulty {
     padding: 5px;
@@ -99,7 +93,7 @@ a {
 .hike-detail-container {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
     font-size: 20px;
 }
@@ -120,6 +114,27 @@ a {
 }
 .description {
     line-height: 39px;
+}
+.detail-buttons {
+    align-self: flex-end;
+}
+.photo-title {
+    margin-bottom: 10px;
+}
+.photo-form {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.photo-container {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px auto;
+}
+.detail-photo {
+    max-height: 300px;
 }
 /* FORM */
 .hike-form {
@@ -151,7 +166,7 @@ textarea {
     cursor: pointer;
     color: #00003f;
     border-radius: 5px;
-    transition: background-color .5s;
+    transition: background-color .5s, color .5s;
     width: 70px;
     text-align: center;
 }
@@ -159,6 +174,22 @@ textarea {
     background-color: #00003f;
     color: #fff;
 }
-.delete-confirm:hover {
+.delete:hover {
     background-color: red;
+}
+.photo-submit {
+    background-color: #fff;
+    cursor: pointer;
+    color: #00003f;
+    border: 1px solid #00003f;
+    border-radius: 5px;
+    padding: 2px;
+    width: 80px;
+    margin-top: 10px;
+    font-size: 14px;
+    transition: background-color .5s, color .5s;
+}
+.photo-submit:hover {
+    background-color: #00003f;
+    color: #fff;
 }

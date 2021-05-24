@@ -18,7 +18,22 @@
         <p class="difficulty {{ selected.get_difficulty_display }}"> {{ selected.get_difficulty_display }}</p>
     </div>
     <p class="description">{{ selected.description }}</p>
-    <a href="{% url 'hikes:update' selected.id %}">Edit this hike</a>
-    <a href="{% url 'hikes:delete' selected.id %}">Delete this hike</a>
+    <div class="detail-buttons">
+        <a class="action-button" href="{% url 'hikes:update' selected.id %}">Edit</a>
+        <a class="action-button delete" href="{% url 'hikes:delete' selected.id %}">Delete</a>
+    </div>
+</div>
+<form class="photo-form" enctype="multipart/form-data" action="{% url 'hikes:add_photo' selected.id %}" method="POST">
+    {% csrf_token %}
+    <h2 class="photo-title">User Photos</h2>
+    <input type="file" name="photo_file">
+    <input class="photo-submit" type="submit" value="Upload">
+</form>
+<div class="photo-container">
+    {% for photo in selected.photo_set.all %}
+        <img class="detail-photo" src="{{ photo.url }}">
+    {% empty %}
+        <div>No Photos Uploaded</div>
+    {% endfor %}
 </div>
 {% endblock %}
