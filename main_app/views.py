@@ -3,6 +3,9 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 import uuid
 import boto3
 from .models import Hike, Photo
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'hikecollector'
@@ -19,17 +22,17 @@ def detail(request, hike_id):
     selected_hike = get_object_or_404(Hike, pk=hike_id)
     return render(request, 'hikes/detail.html', {'selected': selected_hike})
 
-class HikeCreateView(CreateView):
+class HikeCreateView(LoginRequiredMixin, CreateView):
     model = Hike
     fields = ['name', 'location', 'state', 'description', 'length', 'elevation_gain', 'route_type', 'difficulty']
     template_name = 'hikes/hike_form.html'
 
-class HikeUpdateView(UpdateView):
+class HikeUpdateView(LoginRequiredMixin, UpdateView):
     model = Hike
     fields = ['name', 'location', 'state', 'description', 'length', 'elevation_gain', 'route_type', 'difficulty']
     template_name = 'hikes/hike_form.html'
 
-class HikeDeleteView(DeleteView):
+class HikeDeleteView(LoginRequiredMixin, DeleteView):
     model = Hike
     template_name = 'hikes/delete.html'
     success_url = '/hikes'
@@ -49,3 +52,19 @@ def add_photo(request, hike_id):
         except Exception as e:
             print(e)
     return redirect('hikes:detail', hike_id=hike_id)
+
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('hikes:index')
+        else:
+            error_message = 'Invalid sign up - try again'
+    form = UserCreationForm()
+    return render(request, 'registration/signup.html', {
+        'form': form,
+        'error_message': error_message,
+    })

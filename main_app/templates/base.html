@@ -23,7 +23,12 @@
                 <a class="nav-link" href="{% url 'hikes:home' %}"><h2>HikeCollector</h2></a>
             </div>
             <div class="side-nav">
-                <a class="nav-link" href="/">Coming soon: profile link</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                {% else %}
+                    <a href="{% url 'hikes:signup' %}" class="nav-link">Sign Up</a>
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                {% endif %}
             </div>
         </nav>
         {% block content %}

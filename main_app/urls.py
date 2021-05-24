@@ -5,6 +5,7 @@ from .views import HikeCreateView, HikeUpdateView, HikeDeleteView
 app_name = 'hikes'
 urlpatterns = [
     path('', views.home, name='home'),
+    path('accounts/signup', views.signup, name='signup'),
     path('hikes/add/', HikeCreateView.as_view(), name='add'),
     path('hikes/', views.index, name='index'),
     path('hikes/<pk>/update', HikeUpdateView.as_view(), name='update'),

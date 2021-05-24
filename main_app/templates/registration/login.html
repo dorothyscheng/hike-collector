@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="title">Log In</h1>
+<form class="hike-form" action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="action-button" type="submit" value="Login">
+    <input type="hidden" name="next" value="{{ next }}">
+</form>
+{% endblock %}
