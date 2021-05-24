@@ -145,10 +145,10 @@ a {
     display: flex;
     flex-wrap: wrap;
     margin: 10px auto;
-    justify-content: space-evenly;
 }
 .detail-photo {
     max-height: 300px;
+    margin: 5px;
 }
 /* FORM */
 .hike-form {
