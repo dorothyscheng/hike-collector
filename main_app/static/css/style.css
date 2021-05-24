@@ -153,6 +153,18 @@ a {
     max-height: 300px;
     margin: 5px;
 }
+.user-option-button {
+    border: none;
+}
+.fa-heart {
+    color: #00003f;
+    font-size: 23px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.filled {
+    color: red
+}
 /* FORMS */
 .hike-form {
     width: 30%;

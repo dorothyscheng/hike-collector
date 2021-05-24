@@ -72,9 +72,22 @@ def signup(request):
     })
 
 @login_required
-def favorite(request, hike_id):
+def add_favorite(request, hike_id):
     if request.method == 'POST':
-        user = Profile.objects.get(user=request.user)
+        user = request.user
         favorite = Hike.objects.get(pk=hike_id)
-        user.favorites.add(favorite)
+        user.profile.favorites.add(favorite)
     return redirect('hikes:detail', hike_id=hike_id)
+
+@login_required
+def remove_favorite(request, hike_id):
+    if request.method == 'POST':
+        user = request.user
+        favorite = Hike.objects.get(pk=hike_id)
+        user.profile.favorites.remove(favorite)
+    return redirect('hikes:detail', hike_id=hike_id)
+
+@login_required
+def profile(request, user_id):
+    user = request.user
+    return render(request, 'user/profile.html', {'selected': user})

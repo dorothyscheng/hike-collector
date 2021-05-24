@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="title">{{ selected.username }}</h1>
+<h2>Favorites</h2>
+{% for hike in selected.profile.favorites.all %}
+{{ hike }}
+{% endfor %}
+{% endblock %}

@@ -26,6 +26,7 @@
             </div>
             <div class="side-nav">
                 {% if user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'hikes:profile' request.user.id %}">My Profile</a>
                     <a href="{% url 'logout' %}" class="nav-link">Logout</a>
                 {% else %}
                     <a href="{% url 'hikes:signup' %}" class="nav-link">Sign Up</a>
