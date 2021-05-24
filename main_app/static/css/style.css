@@ -199,6 +199,9 @@ textarea {
     font-weight: bold;
     text-align: center;
 }
+.sign-up-link {
+    display: block;
+}
 /* DELETE */
 .buttons {
     display: flex;
