@@ -6,4 +6,8 @@
 {% for hike in selected.profile.favorites.all %}
 {{ hike }}
 {% endfor %}
+<h2>Completed</h2>
+{% for hike in selected.profile.completed.all %}
+{{ hike }}
+{% endfor %}
 {% endblock %}

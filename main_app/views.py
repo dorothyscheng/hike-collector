@@ -88,6 +88,22 @@ def remove_favorite(request, hike_id):
     return redirect('hikes:detail', hike_id=hike_id)
 
 @login_required
+def add_completed(request, hike_id):
+    if request.method == 'POST':
+        user = request.user
+        completed = Hike.objects.get(pk=hike_id)
+        user.profile.completed.add(completed)
+    return redirect('hikes:detail', hike_id=hike_id)
+
+@login_required
+def remove_completed(request, hike_id):
+    if request.method == 'POST':
+        user = request.user
+        completed = Hike.objects.get(pk=hike_id)
+        user.profile.completed.remove(completed)
+    return redirect('hikes:detail', hike_id=hike_id)
+
+@login_required
 def profile(request, user_id):
     user = request.user
     return render(request, 'user/profile.html', {'selected': user})

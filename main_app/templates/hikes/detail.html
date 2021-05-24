@@ -18,15 +18,28 @@
         <p class="difficulty {{ selected.get_difficulty_display }}"> {{ selected.get_difficulty_display }}</p>
     </div>
     <div class="user-options">
+    {% comment %} FAVORITE {% endcomment %}
         {% if request.user and selected in request.user.profile.favorites.all %}
             <form action="{% url 'hikes:remove_favorite' selected.id %}" method="POST">
                 {% csrf_token %}
-                <button class="user-option-button" type="submit"><i class="fas fa-heart filled"></i></button>
+                <button class="user-option-button" type="submit" title="Remove from favorites"><i class="fas fa-heart favorited"></i></button>
             </form>
         {% else %}
             <form action="{% url 'hikes:add_favorite' selected.id %}" method="POST">
                 {% csrf_token %}
-                <button class="user-option-button" type="submit"><i class="far fa-heart"></i></button>
+                <button class="user-option-button" type="submit" title="Add to favorites"><i class="far fa-heart"></i></button>
+            </form>
+        {% endif %}
+    {% comment %} COMPLETED {% endcomment %}
+        {% if request.user and selected in request.user.profile.completed.all %}
+            <form action="{% url 'hikes:remove_completed' selected.id %}" method="POST">
+                {% csrf_token %}
+                <button class="user-option-button" type="submit" title="Remove from completed"><i class="fas fa-check-circle completed"></i></button>
+            </form>
+        {% else %}
+            <form action="{% url 'hikes:add_completed' selected.id %}" method="POST">
+                {% csrf_token %}
+                <button class="user-option-button" type="submit" title="Add to completed"><i class="far fa-check-circle"></i></button>
             </form>
         {% endif %}
     </div>
