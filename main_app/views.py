@@ -2,10 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 import uuid
 import boto3
-from .models import Hike, Photo
+from .models import Hike, Photo, Profile
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'hikecollector'
@@ -38,6 +39,7 @@ class HikeDeleteView(LoginRequiredMixin, DeleteView):
     success_url = '/hikes'
 
 # Reference for configuring photo add: https://git.generalassemb.ly/wc-seir-405/django-aws-config
+@login_required
 def add_photo(request, hike_id):
     photo_file = request.FILES.get('photo_file')
     if photo_file:
@@ -68,3 +70,11 @@ def signup(request):
         'form': form,
         'error_message': error_message,
     })
+
+@login_required
+def favorite(request, hike_id):
+    if request.method == 'POST':
+        user = Profile.objects.get(user=request.user)
+        favorite = Hike.objects.get(pk=hike_id)
+        user.favorites.add(favorite)
+    return redirect('hikes:detail', hike_id=hike_id)

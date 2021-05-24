@@ -11,5 +11,6 @@ urlpatterns = [
     path('hikes/<pk>/update', HikeUpdateView.as_view(), name='update'),
     path('hikes/<pk>/delete', HikeDeleteView.as_view(), name='delete'),
     path('hikes/<int:hike_id>/add_photo', views.add_photo, name='add_photo'),
+    path('hikes/<int:hike_id>/favorite', views.favorite, name='favorite'),
     path('hikes/<int:hike_id>/', views.detail, name='detail')
 ]

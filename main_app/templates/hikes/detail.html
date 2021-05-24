@@ -17,6 +17,12 @@
         </div>
         <p class="difficulty {{ selected.get_difficulty_display }}"> {{ selected.get_difficulty_display }}</p>
     </div>
+    <div class="user-options">
+        <form action="{% url 'hikes:favorite' selected.id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit"><i class="fas fa-heart"></i></button>
+        </form>
+    </div>
     <p class="description">{{ selected.description }}</p>
     <div class="detail-buttons">
         <a class="action-button" href="{% url 'hikes:update' selected.id %}">Edit</a>
