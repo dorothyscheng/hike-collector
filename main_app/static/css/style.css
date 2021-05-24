@@ -52,12 +52,12 @@ a {
 }
 /* INDEX */
 .hikes-container {
-    width: 80%;
+    width: 98%;
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
-    justify-content: space-between;
-    align-items: space-between;
+    justify-content: flex-start;
+    align-items: center;
 }
 .hike-card {
     display: flex;
@@ -84,7 +84,7 @@ a {
     border: 1px solid #00003f;
     border-radius: 5px;
     font-size: 16px;
-    margin: 5px 0;
+    margin: 5px;
 }
 .hike-link:hover {
     color: #fff;
@@ -240,4 +240,9 @@ textarea {
 .photo-submit:hover {
     background-color: #00003f;
     color: #fff;
+}
+/* PROFILE */
+.profile-title {
+    width: 96%;
+    margin: 0 auto;
 }

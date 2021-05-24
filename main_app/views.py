@@ -72,38 +72,34 @@ def signup(request):
     })
 
 @login_required
-def add_favorite(request, hike_id):
+def favorite(request, hike_id):
     if request.method == 'POST':
         user = request.user
         favorite = Hike.objects.get(pk=hike_id)
-        user.profile.favorites.add(favorite)
+        if favorite in user.profile.favorites.all():
+            user.profile.favorites.remove(favorite)
+        else:
+            user.profile.favorites.add(favorite)
     return redirect('hikes:detail', hike_id=hike_id)
 
 @login_required
-def remove_favorite(request, hike_id):
-    if request.method == 'POST':
-        user = request.user
-        favorite = Hike.objects.get(pk=hike_id)
-        user.profile.favorites.remove(favorite)
-    return redirect('hikes:detail', hike_id=hike_id)
-
-@login_required
-def add_completed(request, hike_id):
+def completed(request, hike_id):
     if request.method == 'POST':
         user = request.user
         completed = Hike.objects.get(pk=hike_id)
-        user.profile.completed.add(completed)
-    return redirect('hikes:detail', hike_id=hike_id)
-
-@login_required
-def remove_completed(request, hike_id):
-    if request.method == 'POST':
-        user = request.user
-        completed = Hike.objects.get(pk=hike_id)
-        user.profile.completed.remove(completed)
+        if completed in user.profile.completed.all():
+            user.profile.completed.remove(completed)
+        else:
+            user.profile.completed.add(completed)
     return redirect('hikes:detail', hike_id=hike_id)
 
 @login_required
 def profile(request, user_id):
     user = request.user
-    return render(request, 'user/profile.html', {'selected': user})
+    favorites = user.profile.favorites.all().order_by('name')
+    completed = user.profile.completed.all().order_by('name')
+    return render(request, 'user/profile.html', {
+        'selected': user,
+        'favorites': favorites,
+        'completed': completed,
+        })
