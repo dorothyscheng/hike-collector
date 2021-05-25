@@ -64,6 +64,7 @@
         <div>No Photos Uploaded</div>
     {% endfor %}
 </div>
+<br />
 <div class="hike-detail-container">
     <h2 class="detail-subtitle">Reviews</h2>
     {% for review in selected.review_set.all %}
@@ -80,7 +81,7 @@
             <p class="description">{{ review.review }}</p>
         </div>
     {% empty %}
-            <div>No Reviews Submitted</div>
+            <div>No Reviews Submitted</div><br />
     {% endfor %}
 </div>
 {% endblock %}

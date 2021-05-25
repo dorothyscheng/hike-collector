@@ -236,8 +236,11 @@ a {
 .completed {
     color: green;
 }
-.filled {
+.filled, .rating:hover {
     color: goldenrod;
+}
+.rating {
+    cursor: pointer;
 }
 /* FORMS */
 .hike-form {

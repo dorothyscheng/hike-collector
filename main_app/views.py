@@ -124,6 +124,7 @@ def profile(request, user_id):
 @login_required
 def add_review(request, hike_id):
     error_message = ''
+    print(request.POST)
     user = request.user
     hike = Hike.objects.get(pk=hike_id)
     if request.method == 'POST':
