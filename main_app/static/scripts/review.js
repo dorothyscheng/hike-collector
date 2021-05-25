@@ -2,9 +2,13 @@ const $ratingInput = $('#id_rating');
 
 function createStars() {
     $ratingInput.hide();
+    currentRating = $ratingInput.val();
     for (let i=0; i<5; i++) {
         $star = $('<i class="fas fa-star rating"></i>');
         $star.attr('id', `star${i}`);
+        if (i<currentRating) {
+            $star.addClass('filled');
+        };
         $star.insertBefore($ratingInput);
         $star.on('click', colorStars)
     };

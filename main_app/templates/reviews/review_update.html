@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 
+{% load static %}
+{% block script %}
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<script src="{% static 'scripts/review.js' %}" defer></script>
+{% endblock %}
+
 {% block content %}
 <h1 class="title">Update Review for {{ hike.name }}</h1>
 <form action="" method="POST" class="hike-form">
