@@ -4,7 +4,7 @@ from .models import Hike
 import django_filters
 
 class HikeFilter(django_filters.FilterSet):
-    state = django_filters.CharFilter(lookup_expr='icontains')
+    state = django_filters.CharFilter(lookup_expr='iexact')
     length_gt = django_filters.NumberFilter(field_name='length', lookup_expr='gt', label='Min Length')
     length_lt = django_filters.NumberFilter(field_name='length', lookup_expr='lt', label='Max Length')
     class Meta:
