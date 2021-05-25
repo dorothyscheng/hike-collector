@@ -2,12 +2,27 @@
 
 {% block content %}
 <h1 class="title">{{ selected.username }}</h1>
-<h2 class="profile-title">Favorites</h2>
+<nav class="profile-section-nav">
+    <a class="profile-nav-link" href="#favorites">Favorites</a>
+    <a class="profile-nav-link" href="#completed">Completed</a>
+    <a class="profile-nav-link" href="#reviews">Reviews</a>
+</nav>
+<div class="profile-title-section">
+    <h2 id="favorites" class="profile-title">Favorites</h2>
+    <a class="top-link" href="{% url 'hikes:profile' selected.id %}">Top</a>
+</div>
 {% include 'hike_cards.html' with hikes=favorites %}
 <br />
-<h2 class="profile-title">Completed</h2>
+<div class="profile-title-section">
+    <h2 id="completed" class="profile-title">Completed</h2>
+    <a class="top-link" href="{% url 'hikes:profile' selected.id %}">Top</a>
+</div>
 {% include 'hike_cards.html' with hikes=completed %}
-<h2 class="profile-title">Reviews</h2>
+<br />
+<div class="profile-title-section">
+    <h2 id="reviews" class="profile-title">Reviews</h2>
+    <a class="top-link" href="{% url 'hikes:profile' selected.id %}">Top</a>
+</div>
 <div class="hike-detail-container">
     {% for review in selected.review_set.all %}
         <div class="user-review">

@@ -79,6 +79,8 @@
             by <a href="{% url 'hikes:profile' review.user.id %}">{{ review.user.username }}</a></span>
             <p class="description">{{ review.review }}</p>
         </div>
+    {% empty %}
+            <div>No Reviews Submitted</div>
     {% endfor %}
 </div>
 {% endblock %}

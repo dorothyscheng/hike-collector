@@ -311,7 +311,20 @@ textarea {
     color: #fff;
 }
 /* PROFILE */
+.profile-title-section {
+    display: flex;
+    align-items: center;
+}
+.top-link {
+    margin-left: 10px;
+}
 .profile-title {
     margin-left: 200px;
     font-size: 27px;
+}
+.profile-section-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin: 0 auto;
 }
