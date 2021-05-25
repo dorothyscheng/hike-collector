@@ -20,7 +20,10 @@
                     {% endif %}
                 {% endfor %}
                 for <a href="{% url 'hikes:detail' review.hike.id %}">{{ review.hike.name }}</a>
-                <a class="action-button" href="{% url 'hikes:update_review' review.id %}">Edit</a>
+                {% if authorized %}
+                    <a class="action-button" href="{% url 'hikes:update_review' review.id %}">Edit</a>
+                    <a class="action-button delete" href="{% url 'hikes:delete_review' review.id %}">Delete</a>
+                {% endif %}
             </span>
             <p class="description">{{ review.review }}</p>
         </div>

@@ -42,6 +42,11 @@ class HikeDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'hikes/delete.html'
     success_url = '/hikes'
 
+class ReviewDeleteView(LoginRequiredMixin, DeleteView):
+    model = Review
+    template_name = 'reviews/review_delete.html'
+    success_url = '/hikes'
+
 # Reference for configuring photo add: https://git.generalassemb.ly/wc-seir-405/django-aws-config
 @login_required
 def add_photo(request, hike_id):
@@ -101,7 +106,10 @@ def completed(request, hike_id):
 
 @login_required
 def profile(request, user_id):
+    authorized = False
     user = User.objects.get(pk=user_id)
+    if user == request.user:
+        authorized = True
     favorites = user.profile.favorites.all().order_by('name')
     completed = user.profile.completed.all().order_by('name')
     context = {
@@ -109,6 +117,7 @@ def profile(request, user_id):
         'favorites': favorites,
         'completed': completed,
         'range': range(5),
+        'authorized': authorized,
     }
     return render(request, 'user/profile.html', context)
 
