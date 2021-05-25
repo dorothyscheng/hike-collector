@@ -42,6 +42,8 @@
                 <button class="user-option-button" type="submit" title="Add to completed"><i class="far fa-check-circle"></i></button>
             </form>
         {% endif %}
+        {% comment %} REVIEW {% endcomment %}
+        <a class="action-button" href="{% url 'hikes:add_review' selected.id %}">Add Review</a>
     </div>
     <p class="description">{{ selected.description }}</p>
     <div class="detail-buttons">
@@ -51,7 +53,7 @@
 </div>
 <form class="photo-form" enctype="multipart/form-data" action="{% url 'hikes:add_photo' selected.id %}" method="POST">
     {% csrf_token %}
-    <h2 class="photo-title">User Photos</h2>
+    <h2 class="detail-subtitle">Photos</h2>
     <input type="file" name="photo_file">
     <input class="photo-submit" type="submit" value="Upload">
 </form>
@@ -60,6 +62,23 @@
         <img class="detail-photo" src="{{ photo.url }}">
     {% empty %}
         <div>No Photos Uploaded</div>
+    {% endfor %}
+</div>
+<div class="hike-detail-container">
+    <h2 class="detail-subtitle">Reviews</h2>
+    {% for review in selected.review_set.all %}
+        <div class="user-review">
+            <span class="review-header">
+            {% for i in range %}
+            {% if i < review.rating %}
+                <i class="fas fa-star filled"></i>
+            {% else %}
+                <i class="fas fa-star"></i>
+            {% endif %}
+            {% endfor %}
+            by <a href="{% url 'hikes:profile' review.user.id %}">{{ review.user.username }}</a></span>
+            <p class="description">{{ review.review }}</p>
+        </div>
     {% endfor %}
 </div>
 {% endblock %}

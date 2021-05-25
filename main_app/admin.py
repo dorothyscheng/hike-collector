@@ -1,11 +1,12 @@
 from django.contrib import admin
-from .models import Hike, Photo, Profile
+from .models import Hike, Photo, Profile, Review
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 
 # Register your models here.
 admin.site.register(Hike)
 admin.site.register(Photo)
+admin.site.register(Review)
 
 class ProfileInline(admin.StackedInline):
     model = Profile

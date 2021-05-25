@@ -60,10 +60,12 @@ a {
     background-image: url("https://images.unsplash.com/photo-1594376764040-6bf8f76b47e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2064&q=80");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-image 1s ease-in-out;
 }
 /* INDEX */
 .index-container {
@@ -151,7 +153,7 @@ a {
     display: flex;
     flex-direction: column;
     width: 80%;
-    margin: 0 auto;
+    margin: 30px auto 0 auto;
     font-size: 20px;
 }
 .hike-detail-stats {
@@ -171,12 +173,14 @@ a {
 }
 .description {
     line-height: 39px;
+    margin-top: 10px;
 }
 .detail-buttons {
     align-self: flex-end;
 }
-.photo-title {
+.detail-subtitle {
     margin-bottom: 10px;
+    font-size: 30px;
 }
 .photo-form {
     width: 80%;
@@ -187,7 +191,7 @@ a {
 .photo-container {
     width: 80%;
     display: flex;
-    flex-wrap: wrap;
+    overflow-x: auto;
     margin: 10px auto;
 }
 .detail-photo {
@@ -196,11 +200,26 @@ a {
 }
 .user-options {
     display: flex;
-    width: 5%;
+    width: 14%;
     justify-content: space-between;
+    align-items: center;
+}
+.user-options .action-button {
+    width: fit-content;
 }
 .user-option-button {
     border: none;
+}
+.user-review {
+    border: 1px solid #00003f;
+    border-radius: 5px;
+    margin: 5px 0;
+    padding: 5px 10px;
+}
+.fa-star {
+    color: gray;
+    font-size: 23px;
+    background-color: #fff;
 }
 .fa-heart, .fa-check-circle {
     color: #00003f;
@@ -213,6 +232,9 @@ a {
 }
 .completed {
     color: green;
+}
+.filled {
+    color: goldenrod;
 }
 /* FORMS */
 .hike-form {

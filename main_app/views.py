@@ -2,9 +2,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 import uuid
 import boto3
-from .models import Hike, Photo, Profile
+from .models import Hike, Photo
+from django.contrib.auth.models import User
 from django.contrib.auth import login
-from .forms import SignUpForm
+from .forms import SignUpForm, ReviewForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from .filters import HikeFilter
@@ -21,14 +22,9 @@ def index(request):
     hike_filter = HikeFilter(request.GET, queryset=all_hikes)
     return render(request, 'hikes/index.html', {'filter': hike_filter})
 
-# def index(request):
-#     all_hikes = Hike.objects.order_by('name')
-#     context = { 'hikes': all_hikes }
-#     return render(request, 'hikes/index.html', context)
-
 def detail(request, hike_id):
     selected_hike = get_object_or_404(Hike, pk=hike_id)
-    context = { 'selected': selected_hike }
+    context = { 'selected': selected_hike, 'range': range(5) }
     return render(request, 'hikes/detail.html', context)
 
 class HikeCreateView(LoginRequiredMixin, CreateView):
@@ -57,7 +53,8 @@ def add_photo(request, hike_id):
             s3.upload_fileobj(photo_file, BUCKET, key)
             url = f'{S3_BASE_URL}{BUCKET}/{key}'
             hike = Hike.objects.get(pk=hike_id)
-            photo = Photo(url=url, hike=hike)
+            user = request.user
+            photo = Photo(url=url, hike=hike, user=user)
             photo.save()
         except Exception as e:
             print(e)
@@ -104,7 +101,7 @@ def completed(request, hike_id):
 
 @login_required
 def profile(request, user_id):
-    user = request.user
+    user = User.objects.get(pk=user_id)
     favorites = user.profile.favorites.all().order_by('name')
     completed = user.profile.completed.all().order_by('name')
     context = {
@@ -113,3 +110,26 @@ def profile(request, user_id):
         'completed': completed,
     }
     return render(request, 'user/profile.html', context)
+
+@login_required
+def add_review(request, hike_id):
+    error_message = ''
+    user = request.user
+    hike = Hike.objects.get(pk=hike_id)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            new_review = form.save(commit=False)
+            new_review.user = user
+            new_review.hike = hike
+            new_review.save()
+            return redirect('hikes:detail', hike_id=hike_id)
+        else:
+            error_message = 'Invalid review - try again'
+    form = ReviewForm()
+    context = {
+        'form': form,
+        'error_message': error_message,
+        'hike': hike,
+    }
+    return render(request, 'reviews/review_form.html', context)

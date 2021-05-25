@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="title">Add or Update a Review for {{ hike.name }}</h1>
+{% if error_message %}
+    <p class="error">{{ error_message }}</p>
+{% endif %}
+<form action="{% url 'hikes:add_review' hike.id %}" method="POST" class="hike-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="action-button" type="submit" value="Submit">
+</form>
+{% endblock %}

@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block script %}
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<script src="{% static 'scripts/home.js' %}" defer></script>
+{% endblock %}
 
 {% block content%}
-<div class="home-head">
+<div class="home-head" id="home-head">
     <h1 class="home-title">Start Exploring</h1>
 </div>
 {% endblock %}

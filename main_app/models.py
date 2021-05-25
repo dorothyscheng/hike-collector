@@ -12,6 +12,7 @@ class Hike(models.Model):
     description = models.TextField()
     length = models.FloatField()
     elevation_gain = models.IntegerField()
+    average_rating = models.FloatField(null=True)
     ROUTE_TYPE_CHOICES = (
         ('LP',  'Loop'),
         ('OB', 'Out & back'),
@@ -32,6 +33,7 @@ class Hike(models.Model):
 class Photo(models.Model):
     url = models.CharField(max_length=500)
     hike = models.ForeignKey(Hike, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return f'Photo for {self.hike} @ {self.url}'
 
@@ -49,3 +51,11 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+class Review(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    hike = models.ForeignKey(Hike, on_delete=models.CASCADE)
+    rating = models.IntegerField()
+    review = models.TextField()
+    def __str__(self):
+        return f'Review for {self.hike} by {self.user}'

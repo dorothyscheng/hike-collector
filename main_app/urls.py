@@ -14,5 +14,6 @@ urlpatterns = [
     path('hikes/<int:hike_id>/favorite', views.favorite, name='favorite'),
     path('hikes/<int:hike_id>/completed', views.completed, name='completed'),
     path('hikes/<int:hike_id>/', views.detail, name='detail'),
-    path('user/<int:user_id>', views.profile, name='profile')
+    path('user/<int:user_id>', views.profile, name='profile'),
+    path('reviews/<int:hike_id>/add', views.add_review, name='add_review'),
 ]
