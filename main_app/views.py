@@ -108,6 +108,7 @@ def profile(request, user_id):
         'selected': user,
         'favorites': favorites,
         'completed': completed,
+        'range': range(5),
     }
     return render(request, 'user/profile.html', context)
 

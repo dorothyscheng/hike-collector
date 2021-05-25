@@ -3,9 +3,27 @@
 {% block content %}
 <h1 class="title">{{ selected.username }}</h1>
 <h2 class="profile-title">Favorites</h2>
-{% include 'hike_cards.html' with hikes=favorites%}
+{% include 'hike_cards.html' with hikes=favorites %}
 <br />
 <h2 class="profile-title">Completed</h2>
-{% include 'hike_cards.html' with hikes=completed%}
-{{ hike }}
+{% include 'hike_cards.html' with hikes=completed %}
+<h2 class="profile-title">Reviews</h2>
+<div class="hike-detail-container">
+    {% for review in selected.review_set.all %}
+        <div class="user-review">
+            <span class="review-header">
+            {% for i in range %}
+            {% if i < review.rating %}
+                <i class="fas fa-star filled"></i>
+            {% else %}
+                <i class="fas fa-star"></i>
+            {% endif %}
+            {% endfor %}
+            for <a href="{% url 'hikes:detail' review.hike.id %}">{{ review.hike.name }}</a></span>
+            <p class="description">{{ review.review }}</p>
+        </div>
+    {% empty %}
+    <p class="no-hikes-message">No reviews found</p>
+    {% endfor %}
+</div>
 {% endblock %}
