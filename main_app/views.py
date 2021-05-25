@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 import uuid
 import boto3
-from .models import Hike, Photo
+from .models import Hike, Photo, Review
 from django.contrib.auth.models import User
 from django.contrib.auth import login
 from .forms import SignUpForm, ReviewForm
@@ -133,4 +133,31 @@ def add_review(request, hike_id):
         'error_message': error_message,
         'hike': hike,
     }
-    return render(request, 'reviews/review_form.html', context)
+    return render(request, 'reviews/review_add.html', context)
+
+@login_required
+def update_review(request, review_id):
+    error_message = ''
+    review = Review.objects.get(pk=review_id)
+    if request.user == review.user:
+        if request.method == 'GET':
+            form = ReviewForm(instance=review)
+        if request.method == 'POST':
+            form = ReviewForm(request.POST, instance=review)
+            if form.is_valid():
+                form.save()
+                return redirect('hikes:profile', user_id=review.user.id)
+        context = {
+            'form': form,
+            'hike': review.hike
+        }
+        return render(request, 'reviews/review_update.html', context)
+    else:
+        error_message = 'Not authorized to edit that review - add your own review here'
+        form = ReviewForm()
+        context = {
+            'form': form,
+            'hike': review.hike,
+            'error_message': error_message,
+        }
+        return render(request, 'reviews/review_add.html', context)

@@ -12,14 +12,16 @@
     {% for review in selected.review_set.all %}
         <div class="user-review">
             <span class="review-header">
-            {% for i in range %}
-            {% if i < review.rating %}
-                <i class="fas fa-star filled"></i>
-            {% else %}
-                <i class="fas fa-star"></i>
-            {% endif %}
-            {% endfor %}
-            for <a href="{% url 'hikes:detail' review.hike.id %}">{{ review.hike.name }}</a></span>
+                {% for i in range %}
+                    {% if i < review.rating %}
+                        <i class="fas fa-star filled"></i>
+                    {% else %}
+                        <i class="fas fa-star"></i>
+                    {% endif %}
+                {% endfor %}
+                for <a href="{% url 'hikes:detail' review.hike.id %}">{{ review.hike.name }}</a>
+                <a class="action-button" href="{% url 'hikes:update_review' review.id %}">Edit</a>
+            </span>
             <p class="description">{{ review.review }}</p>
         </div>
     {% empty %}

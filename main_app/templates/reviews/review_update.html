@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="title">Add or Edit a Hike</h1>
-<form class="hike-form" method="POST">
+<h1 class="title">Update Review for {{ hike.name }}</h1>
+<form action="" method="POST" class="hike-form">
     {% csrf_token %}
     {{ form.as_p }}
     <input class="action-button" type="submit" value="Submit">
