@@ -4,9 +4,10 @@ import uuid
 import boto3
 from .models import Hike, Photo, Profile
 from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
+from .forms import SignUpForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from .filters import HikeFilter
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'hikecollector'
@@ -17,11 +18,18 @@ def home(request):
 
 def index(request):
     all_hikes = Hike.objects.order_by('name')
-    return render(request, 'hikes/index.html', {'hikes': all_hikes})
+    hike_filter = HikeFilter(request.GET, queryset=all_hikes)
+    return render(request, 'hikes/index.html', {'filter': hike_filter})
+
+# def index(request):
+#     all_hikes = Hike.objects.order_by('name')
+#     context = { 'hikes': all_hikes }
+#     return render(request, 'hikes/index.html', context)
 
 def detail(request, hike_id):
     selected_hike = get_object_or_404(Hike, pk=hike_id)
-    return render(request, 'hikes/detail.html', {'selected': selected_hike})
+    context = { 'selected': selected_hike }
+    return render(request, 'hikes/detail.html', context)
 
 class HikeCreateView(LoginRequiredMixin, CreateView):
     model = Hike
@@ -58,18 +66,19 @@ def add_photo(request, hike_id):
 def signup(request):
     error_message = ''
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect('hikes:index')
         else:
             error_message = 'Invalid sign up - try again'
-    form = UserCreationForm()
-    return render(request, 'registration/signup.html', {
+    form = SignUpForm()
+    context = {
         'form': form,
-        'error_message': error_message,
-    })
+        'error_message' : error_message,
+    }
+    return render(request, 'registration/signup.html', context)
 
 @login_required
 def favorite(request, hike_id):
@@ -98,8 +107,9 @@ def profile(request, user_id):
     user = request.user
     favorites = user.profile.favorites.all().order_by('name')
     completed = user.profile.completed.all().order_by('name')
-    return render(request, 'user/profile.html', {
+    context = {
         'selected': user,
         'favorites': favorites,
         'completed': completed,
-        })
+    }
+    return render(request, 'user/profile.html', context)

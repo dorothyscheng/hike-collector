@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% include 'hike_cards.html' %}
+<div class="index-container">
+    <form class="filter-form" method="GET">
+        {{ filter.form.as_p }}
+        <button class="action-button" type="submit">Filter</button>
+        <a href="{% url 'hikes:index' %}" class="action-button">Reset</a>
+    </form>
+    {% include 'hike_cards.html' with hikes=filter.qs %}
+</div>
 {% endblock %}

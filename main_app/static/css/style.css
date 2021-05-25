@@ -51,11 +51,31 @@ a {
     color: #00003f;
 }
 /* INDEX */
+.index-container {
+    display: flex;
+}
+.filter-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+.filter-form p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+.filter-form .action-button {
+    margin: 5px 0;
+}
 .hikes-container {
-    width: 98%;
+    /* width: 98%; */
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto;
+    margin-left: 200px;
+    /* margin: 0 auto; */
     justify-content: flex-start;
     align-items: center;
 }
@@ -246,6 +266,5 @@ textarea {
 }
 /* PROFILE */
 .profile-title {
-    width: 96%;
-    margin: 0 auto;
+    margin-left: 200px;
 }
