@@ -15,7 +15,12 @@ BUCKET = 'hikecollector'
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    top_hikes = Hike.objects.exclude(average_rating=None).order_by('-average_rating')[:4]
+    context = {
+        'top_hikes': top_hikes,
+        'range': range(5),
+    }
+    return render(request, 'home.html', context)
 
 def index(request):
     all_hikes = Hike.objects.order_by('name')

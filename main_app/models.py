@@ -12,7 +12,7 @@ class Hike(models.Model):
     description = models.TextField()
     length = models.FloatField()
     elevation_gain = models.IntegerField()
-    average_rating = models.FloatField(null=True)
+    average_rating = models.IntegerField(null=True)
     ROUTE_TYPE_CHOICES = (
         ('LP',  'Loop'),
         ('OB', 'Out & back'),

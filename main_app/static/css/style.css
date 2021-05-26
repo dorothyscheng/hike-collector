@@ -60,6 +60,7 @@ a {
     background-image: url("https://images.unsplash.com/photo-1594376764040-6bf8f76b47e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2064&q=80");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     height: 300px;
     display: flex;
     align-items: center;
@@ -104,12 +105,12 @@ a {
 .hike-card {
     display: flex;
     flex-direction: column;
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
 }
 .hike-img {
-    width: 400px;
-    height: 300px;
+    width: 350px;
+    height: 250px;
     object-fit: cover;
 }
 .hike-info {
@@ -129,7 +130,7 @@ a {
     color: #00003f;
     border: 1px solid #00003f;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 14px;
     margin: 5px;
     transition: box-shadow .3s;
 }
@@ -140,7 +141,6 @@ a {
     padding: 5px;
     color: #fff;
     border-radius: 5px;
-    border: 3px solid #fff;
 }
 .Easy {
     background-color: #0e6b0e;
@@ -178,7 +178,7 @@ a {
     font-style: italic;
 }
 .description {
-    line-height: 39px;
+    line-height: 30px;
     margin-top: 10px;
 }
 .detail-buttons {
@@ -199,6 +199,7 @@ a {
     display: flex;
     overflow-x: auto;
     margin: 10px auto;
+    font-size: 20px;
 }
 .detail-photo {
     max-height: 300px;
@@ -232,6 +233,10 @@ a {
     font-size: 23px;
     background-color: #fff;
     cursor: pointer;
+    transition: font-size .5s;
+}
+.fa-heart:hover, .fa-check-circle:hover {
+    font-size: 25px;
 }
 .favorited {
     color: red;

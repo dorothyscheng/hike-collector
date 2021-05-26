@@ -13,4 +13,8 @@
 <div class="home-head" id="home-head">
     <a href="{% url 'hikes:index' %}"><h1 class="home-title">Start Exploring</h1></a>
 </div>
+<br />
+<h2 class="profile-title">Top Rated Hikes</h2>
+{% include 'hike_cards.html' with hikes=top_hikes %}
+<br />
 {% endblock %}
