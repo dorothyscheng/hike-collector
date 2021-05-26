@@ -264,13 +264,24 @@ a {
     background-color: rgba(0,0,0,.4);
 }
 .modal-content {
-    margin: 5% auto;
+    margin: 1% auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
 }
-#selected-img {
+.selected-img {
     max-height: 90vh;
-    margin: 0 auto;
+    margin: 0 10px;
+}
+.fa-chevron-left, .fa-chevron-right {
+    font-size: 102px;
+    color: rgba(255,255,255,.4);
+    cursor: pointer;
+    padding: 20px;
+    transition: color .5s;
+}
+.fa-chevron-left:hover, .fa-chevron-right:hover {
+    color:  #fff;
 }
 /* FORMS */
 .hike-form {
