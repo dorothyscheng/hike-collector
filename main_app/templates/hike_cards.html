@@ -15,6 +15,19 @@
                             <p>{{ hike.length }} miles</p>
                             <p>{{ hike.get_route_type_display }}</p>
                         </div>
+                        <div class="hike-rating">
+                            {% if hike.average_rating is null %}
+                                No reviews yet
+                            {% else %}
+                                {% for i in range %}
+                                    {% if i < hike.average_rating %}
+                                        <i class="fas fa-star filled"></i>
+                                    {% else %}
+                                        <i class="fas fa-star"></i>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
                         <p class="difficulty {{ hike.get_difficulty_display }}"> {{ hike.get_difficulty_display }}</p>
                     </div>
                 </div>

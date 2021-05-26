@@ -20,7 +20,11 @@ def home(request):
 def index(request):
     all_hikes = Hike.objects.order_by('name')
     hike_filter = HikeFilter(request.GET, queryset=all_hikes)
-    return render(request, 'hikes/index.html', {'filter': hike_filter})
+    context = {
+        'filter': hike_filter,
+        'range': range(5),
+    }
+    return render(request, 'hikes/index.html', context)
 
 def detail(request, hike_id):
     selected_hike = get_object_or_404(Hike, pk=hike_id)
@@ -126,7 +130,7 @@ def calculate_average_rating(hike):
     rating_sum  = 0
     for review in all_hike_reviews:
         rating_sum += review.rating
-    return rating_sum / len(all_hike_reviews)
+    return rating_sum // len(all_hike_reviews)
 
 @login_required
 def add_review(request, hike_id):

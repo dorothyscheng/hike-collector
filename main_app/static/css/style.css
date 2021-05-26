@@ -122,16 +122,20 @@ a {
     justify-content: space-between;
     margin-top: 5px;
 }
+.hike-rating {
+    display: flex;
+    align-items: center;
+}
 .hike-link {
     color: #00003f;
     border: 1px solid #00003f;
     border-radius: 5px;
     font-size: 16px;
     margin: 5px;
+    transition: box-shadow .3s;
 }
 .hike-link:hover {
-    color: #fff;
-    background-color: #00003f;
+    box-shadow: 3px 3px 10px #00003f;
 }
 .difficulty {
     padding: 5px;

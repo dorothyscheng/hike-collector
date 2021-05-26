@@ -15,6 +15,22 @@
             <span class="detail-title">Route type:</span>
             <p>{{ selected.get_route_type_display }}</p>
         </div>
+        <div class="detail-item">
+            <span class="detail-title">Average rating:</span>
+            <div class="hike-rating">
+                {% if selected.average_rating is null %}
+                    No reviews yet
+                {% else %}
+                    {% for i in range %}
+                        {% if i < selected.average_rating %}
+                            <i class="fas fa-star filled"></i>
+                        {% else %}
+                            <i class="fas fa-star"></i>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
         <p class="difficulty {{ selected.get_difficulty_display }}"> {{ selected.get_difficulty_display }}</p>
     </div>
     <div class="user-options">
@@ -84,4 +100,5 @@
             <div>No Reviews Submitted</div><br />
     {% endfor %}
 </div>
+<br />
 {% endblock %}

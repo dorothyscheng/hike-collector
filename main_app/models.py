@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 
 # Create your models here.
@@ -59,3 +59,18 @@ class Review(models.Model):
     review = models.TextField()
     def __str__(self):
         return f'Review for {self.hike} by {self.user}'
+
+def calculate_average_rating(hike):
+    all_hike_reviews = Review.objects.filter(hike=hike)
+    if len(all_hike_reviews) == 0:
+        return None
+    else:
+        rating_sum  = 0
+        for review in all_hike_reviews:
+            rating_sum += review.rating
+        return rating_sum // len(all_hike_reviews)
+
+@receiver(post_delete, sender=Review)
+def update_rating_on_delete(sender, instance, **kwargs):
+    instance.hike.average_rating = calculate_average_rating(instance.hike)
+    instance.hike.save()
