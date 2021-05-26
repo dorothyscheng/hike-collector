@@ -89,6 +89,9 @@ a {
 .filter-form input {
     padding: 2px;
 }
+#id_name {
+    width: 150px;
+}
 .filter-actions {
     display: flex;
 }
@@ -369,6 +372,7 @@ textarea {
 .profile-nav-item {
     display: flex;
     align-items: center;
+    padding: 10px;
 }
 .top-link {
     margin-left: 10px;
