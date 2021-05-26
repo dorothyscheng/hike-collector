@@ -121,6 +121,13 @@ def profile(request, user_id):
     }
     return render(request, 'user/profile.html', context)
 
+def calculate_average_rating(hike):
+    all_hike_reviews = Review.objects.filter(hike=hike)
+    rating_sum  = 0
+    for review in all_hike_reviews:
+        rating_sum += review.rating
+    return rating_sum / len(all_hike_reviews)
+
 @login_required
 def add_review(request, hike_id):
     error_message = ''
@@ -134,6 +141,8 @@ def add_review(request, hike_id):
             new_review.user = user
             new_review.hike = hike
             new_review.save()
+            hike.average_rating = calculate_average_rating(hike)
+            hike.save()
             return redirect('hikes:detail', hike_id=hike_id)
         else:
             error_message = 'Invalid review - try again'
@@ -156,6 +165,8 @@ def update_review(request, review_id):
             form = ReviewForm(request.POST, instance=review)
             if form.is_valid():
                 form.save()
+                review.hike.average_rating = calculate_average_rating(review.hike)
+                review.hike.save()
                 return redirect('hikes:profile', user_id=review.user.id)
         context = {
             'form': form,
