@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="title">Update your account</h1>
+<form class="hike-form" action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="action-button" type="submit" value="Update">
+</form>
+{% endblock %}

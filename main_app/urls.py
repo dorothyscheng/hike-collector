@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import HikeCreateView, HikeUpdateView, HikeDeleteView, ReviewDeleteView
+from .views import HikeCreateView, HikeUpdateView, HikeDeleteView, ReviewDeleteView, UserDeleteView
 
 app_name = 'hikes'
 urlpatterns = [
@@ -15,6 +15,8 @@ urlpatterns = [
     path('hikes/<int:hike_id>/completed/', views.completed, name='completed'),
     path('hikes/<int:hike_id>/', views.detail, name='detail'),
     path('user/<int:user_id>/', views.profile, name='profile'),
+    path('user/<int:user_id>/update/', views.update_user, name='update_user'),
+    path('user/<pk>/delete/', UserDeleteView.as_view(), name='delete_user'),
     path('reviews/<int:hike_id>/add/', views.add_review, name='add_review'),
     path('reviews/<int:review_id>/update/', views.update_review, name='update_review'),
     path('reviews/<pk>/delete/', ReviewDeleteView.as_view(), name='delete_review'),

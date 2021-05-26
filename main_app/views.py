@@ -56,6 +56,11 @@ class ReviewDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'reviews/review_delete.html'
     success_url = '/hikes'
 
+class UserDeleteView(LoginRequiredMixin, DeleteView):
+    model = User
+    template_name = 'registration/delete.html'
+    success_url = '/'
+
 # Reference for configuring photo add: https://git.generalassemb.ly/wc-seir-405/django-aws-config
 @login_required
 def add_photo(request, hike_id):
@@ -191,3 +196,22 @@ def update_review(request, review_id):
             'error_message': error_message,
         }
         return render(request, 'reviews/review_add.html', context)
+
+@login_required
+def update_user(request, user_id):
+    user = User.objects.get(pk=user_id)
+    if request.user == user:
+        if request.method == 'GET':
+            form = SignUpForm(instance=user)
+        if request.method == 'POST':
+            form = SignUpForm(request.POST, instance=user)
+            if form.is_valid():
+                form.save()
+                login(request, user)
+                return redirect('hikes:profile', user_id=user.id)
+        context = {
+            'form': form,
+        }
+        return render(request, 'registration/update.html', context)
+    else:
+        return redirect('login')
