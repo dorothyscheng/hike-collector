@@ -360,7 +360,10 @@ textarea {
     right: 10px;
     top: 106px;
 }
-.profile-title-section {
+.profile-section {
+    display: none;
+}
+.profile-nav-item {
     display: flex;
     align-items: center;
 }
@@ -374,6 +377,12 @@ textarea {
 .profile-section-nav {
     display: flex;
     justify-content: space-between;
-    width: 300px;
+    width: 500px;
     margin: 0 auto;
+}
+.profile-nav-item {
+    cursor: pointer;
+}
+.fa-chevron-down, .fa-chevron-up {
+    margin-left: 5px;
 }
