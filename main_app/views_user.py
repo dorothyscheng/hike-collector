@@ -71,5 +71,5 @@ def update_user(request, user_id):
         return redirect('login')
 
 def index(request):
-    all_users = User.objects.all().order_by('username')
+    all_users = User.objects.all().order_by('-date_joined')
     return render(request, 'user/user_index.html', {'users': all_users})
