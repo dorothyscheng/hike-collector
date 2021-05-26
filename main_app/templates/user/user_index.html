@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{% for user in users %}
+    <a href="{% url 'hikes:profile' user.id %}">
+        <div class="user-card">
+            <h2>{{ user.username }}</h2>
+            Favorites {{ user.profile.favorites.all | length }}
+            Completed {{ user.profile.completed.all | length }}
+            Reviews {{ user.profile.reviews_set.all | length }}
+            Reviews {{ user.profile.photos_set.all | length }}
+        </div>
+    </a>
+{% endfor %}
 {% endblock %}

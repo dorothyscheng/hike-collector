@@ -28,6 +28,12 @@ class UserDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'registration/delete.html'
     success_url = '/'
 
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object != self.request.user:
+            return redirect('login')
+        return super().get(request,*args, **kwargs)
+
 @login_required
 def profile(request, user_id):
     authorized = False
@@ -63,3 +69,7 @@ def update_user(request, user_id):
         return render(request, 'registration/update.html', context)
     else:
         return redirect('login')
+
+def index(request):
+    all_users = User.objects.all().order_by('username')
+    return render(request, 'user/user_index.html', {'users': all_users})

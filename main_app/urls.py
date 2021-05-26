@@ -20,6 +20,7 @@ urlpatterns = [
 
     # User paths
     path('accounts/signup/', views_user.signup, name='signup'),
+    path('user/', views_user.index, name='user_index'),
     path('user/<int:user_id>/', views_user.profile, name='profile'),
     path('user/<int:user_id>/update/', views_user.update_user, name='update_user'),
     path('user/<pk>/delete/', UserDeleteView.as_view(), name='delete_user'),

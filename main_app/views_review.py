@@ -71,3 +71,9 @@ class ReviewDeleteView(LoginRequiredMixin, DeleteView):
     model = Review
     template_name = 'reviews/review_delete.html'
     success_url = '/hikes'
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.user != self.request.user:
+            return redirect('login')
+        return super().get(request, *args, **kwargs)
