@@ -89,13 +89,7 @@
         <div>No Photos Uploaded</div>
     {% endfor %}
 </div>
-<div id="photo-modal" class="photo-modal">
-    <div id="modal-content" class="modal-content">
-        <i id="left" class="fas fa-chevron-left"></i>
-        <img class="selected-img" src="">
-        <i id="right" class="fas fa-chevron-right"></i>
-    </div>
-</div>
+{% include 'partials/photo_modal.html' %}
 <br />
 <div class="hike-detail-container">
     <h2 class="detail-subtitle">Reviews</h2>

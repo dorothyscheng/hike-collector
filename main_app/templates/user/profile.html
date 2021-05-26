@@ -7,6 +7,7 @@
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"></script>
 <script src="{% static 'scripts/profile.js' %}" defer></script>
+<script src="{% static 'scripts/hikeDetail.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -19,26 +20,30 @@
 {% endif %}
 <nav class="profile-section-nav">
     <div id="favorites-nav" class="profile-nav-item">
-        <h3 id="favorites-link" class="profile-nav-link">Favorites ({{ favorites | length }})</h3>
+        <h3 class="profile-nav-link">Favorites ({{ favorites | length }})</h3>
         <i id="favorites-arrow" class="fas fa-chevron-down"></i>
     </div>
     <div id="completed-nav" class="profile-nav-item">
-        <h3 id="completed-link" class="profile-nav-link">Completed ({{ completed | length }})</h3>
+        <h3 class="profile-nav-link">Completed ({{ completed | length }})</h3>
         <i id="completed-arrow" class="fas fa-chevron-down"></i>
     </div>
     <div id="reviews-nav" class="profile-nav-item">
-        <h3 id="reviews-link" class="profile-nav-link">Reviews ({{ selected.review_set.all | length }})</h3>
+        <h3 class="profile-nav-link">Reviews ({{ selected.review_set.all | length }})</h3>
         <i id="reviews-arrow" class="fas fa-chevron-down"></i>
+    </div>
+    <div id="photos-nav" class="profile-nav-item">
+        <h3 class="profile-nav-link">Photos ({{ selected.photo_set.all | length }})</h3>
+        <i id="photos-arrow" class="fas fa-chevron-down"></i>
     </div>
 </nav>
 <section id="favorites-section" class="profile-section">
     <h2 id="favorites" class="profile-title">Favorites</h2>
-    {% include 'hike_cards.html' with hikes=favorites %}
+    {% include 'partials/hike_cards.html' with hikes=favorites %}
     <br />
 </section>
 <section id="completed-section" class="profile-section">
     <h2 id="completed" class="profile-title">Completed</h2>
-    {% include 'hike_cards.html' with hikes=completed %}
+    {% include 'partials/hike_cards.html' with hikes=completed %}
     <br />
 </section>
 <section id="reviews-section" class="profile-section">
@@ -68,4 +73,15 @@
     </div>
     <br />
 </section>
+<section id="photos-section" class="profile-section">
+    <h2 id="photos" class="profile-title">Photos</h2>
+    <div class="photo-container">
+        {% for photo in selected.photo_set.all %}
+            <img class="detail-photo" src="{{ photo.url }}">
+        {% empty %}
+            <div>No Photos Uploaded</div>
+        {% endfor %}
+    </div>
+</section>
+{% include 'partials/photo_modal.html' %}
 {% endblock %}

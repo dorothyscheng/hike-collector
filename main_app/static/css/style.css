@@ -138,9 +138,12 @@ a {
     box-shadow: 3px 3px 10px #00003f;
 }
 .difficulty {
-    padding: 5px;
+    padding: 0 5px;
     color: #fff;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .Easy {
     background-color: #0e6b0e;
@@ -377,7 +380,7 @@ textarea {
 .profile-section-nav {
     display: flex;
     justify-content: space-between;
-    width: 500px;
+    width: 600px;
     margin: 0 auto;
 }
 .profile-nav-item {

@@ -9,6 +9,6 @@
             <a href="{% url 'hikes:index' %}" class="action-button">Reset</a>
         </div>
     </form>
-    {% include 'hike_cards.html' with hikes=filter.qs %}
+    {% include 'partials/hike_cards.html' with hikes=filter.qs %}
 </div>
 {% endblock %}

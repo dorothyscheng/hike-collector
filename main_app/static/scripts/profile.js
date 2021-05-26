@@ -22,3 +22,8 @@ $('#reviews-nav').on('click',()=>{
     $('#reviews-section').slideToggle();
     changeArrow($('#reviews-arrow'));
 });
+
+$('#photos-nav').on('click',()=>{
+    $('#photos-section').slideToggle();
+    changeArrow($('#photos-arrow'));
+});
