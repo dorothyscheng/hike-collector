@@ -3,8 +3,10 @@
 {% block content %}
 <h1 class="title">{{ selected.username }}</h1>
 {% if authorized %}
+<div class="profile-actions">
     <a class="action-button" href="{% url 'hikes:update_user' selected.id %}">Edit Profile</a>
     <a class="action-button delete" href="{% url 'hikes:delete_user' selected.id %}">Delete Profile</a>
+</div>
 {% endif %}
 <nav class="profile-section-nav">
     <a class="profile-nav-link" href="#favorites">Favorites</a>

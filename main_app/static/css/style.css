@@ -322,6 +322,11 @@ textarea {
     color: #fff;
 }
 /* PROFILE */
+.profile-actions {
+    position: absolute;
+    right: 10px;
+    top: 106px;
+}
 .profile-title-section {
     display: flex;
     align-items: center;
