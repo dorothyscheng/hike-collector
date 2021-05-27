@@ -393,6 +393,11 @@ textarea {
 .fa-chevron-down, .fa-chevron-up {
     margin-left: 5px;
 }
+.photo-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 /* USER INDEX */
 .user-link {
     color: #00003f;

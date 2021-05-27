@@ -3,6 +3,7 @@ from . import views, views_user, views_review
 from .views import HikeCreateView, HikeUpdateView, HikeDeleteView
 from .views_user import UserDeleteView
 from .views_review import ReviewDeleteView
+from .views_photo import PhotoDeleteView
 
 app_name = 'hikes'
 urlpatterns = [
@@ -17,6 +18,9 @@ urlpatterns = [
     path('hikes/<int:hike_id>/favorite/', views.favorite, name='favorite'),
     path('hikes/<int:hike_id>/completed/', views.completed, name='completed'),
     path('hikes/<int:hike_id>/', views.detail, name='detail'),
+
+    # Photo paths
+    path('photo/<pk>/delete', PhotoDeleteView.as_view(), name='delete_photo'),
 
     # User paths
     path('accounts/signup/', views_user.signup, name='signup'),

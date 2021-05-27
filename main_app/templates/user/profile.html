@@ -77,7 +77,12 @@
     <h2 id="photos" class="profile-title">Photos</h2>
     <div class="photo-container">
         {% for photo in selected.photo_set.all %}
+        <div class="photo-card">
             <img class="detail-photo" src="{{ photo.url }}">
+            {% if authorized %}
+                <a href="{% url 'hikes:delete_photo' photo.id %}" class="action-button delete">Delete</a>
+            {% endif %}
+        </div>
         {% empty %}
             <div>No Photos Uploaded</div>
         {% endfor %}
