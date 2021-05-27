@@ -8,17 +8,24 @@
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"></script>
 <script src="{% static 'scripts/index.js' %}" defer></script>
+<script src="{% static 'scripts/profile.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
 <div class="index-container">
-    <form id="filter-form" class="filter-form" method="GET">
-        {{ filter.form.as_p }}
-        <div class="filter-actions">
-            <button class="action-button" type="submit">Filter</button>
-            <a href="{% url 'hikes:index' %}" class="action-button">Reset</a>
+    <div class="filter-div">
+        <div id="filter-controls" class="filter-controls">
+            <h3>Filter</h3>
+            <i id="filter-arrow" class="fas fa-chevron-up"></i>
         </div>
-    </form>
+        <form id="filter-form" class="filter-form hidden" method="GET">
+            {{ filter.form.as_p }}
+            <div class="filter-actions">
+                <button class="action-button" type="submit">Filter</button>
+                <a href="{% url 'hikes:index' %}" class="action-button">Reset</a>
+            </div>
+        </form>
+    </div>
     {% include 'partials/hike_cards.html' with hikes=filter.qs %}
 </div>
 {% endblock %}

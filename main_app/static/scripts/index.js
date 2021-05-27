@@ -52,6 +52,7 @@ function addPlaceholder() {
     $minLength.attr('placeholder','Min (miles)');
     $maxLength.attr('placeholder','Max (miles)');
 }
+
 moveCheckboxes();
 displayStars();
 addPlaceholder();

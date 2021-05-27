@@ -27,3 +27,8 @@ $('#photos-nav').on('click',()=>{
     $('#photos-section').slideToggle();
     changeArrow($('#photos-arrow'));
 });
+
+$('#filter-controls').on('click',()=>{
+    $('#filter-form').slideToggle();
+    changeArrow($('#filter-arrow'));
+});
