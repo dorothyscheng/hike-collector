@@ -70,14 +70,13 @@ a {
 /* INDEX */
 .index-container {
     display: flex;
+    flex-direction: column;
 }
 .filter-form {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    position: fixed;
-    margin-top: 30px;
+    align-items: flex-start;
+    margin-top: 10px;
 }
 .filter-form p {
     display: flex;
@@ -86,14 +85,28 @@ a {
     margin: 7px;
     font-weight: bold;
 }
+.filter-form ul {
+    display: block;
+    font-weight: normal;
+}
 .filter-form input {
     padding: 2px;
+    width:fit-content;
 }
 #id_name {
     width: 150px;
 }
+#id_length_0, #id_length_1 {
+    width: 87px;
+}
+#star-text {
+    font-style: italic;
+    font-weight: normal;
+    font-size: 12px;
+}
 .filter-actions {
     display: flex;
+    align-self: center;
 }
 .filter-form .action-button {
     margin: 5px;
@@ -101,7 +114,8 @@ a {
 .hikes-container {
     display: flex;
     flex-wrap: wrap;
-    margin: 10px 0 10px 200px;
+    /* margin: 10px 0 10px 200px; */
+    margin: 0 auto;
     justify-content: flex-start;
     align-items: center;
 }

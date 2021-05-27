@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block script %}
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<script src="{% static 'scripts/index.js' %}" defer></script>
+{% endblock %}
+
 {% block content %}
 <div class="index-container">
-    <form class="filter-form" method="GET">
+    <form id="filter-form" class="filter-form" method="GET">
         {{ filter.form.as_p }}
         <div class="filter-actions">
             <button class="action-button" type="submit">Filter</button>

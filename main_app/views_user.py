@@ -34,8 +34,6 @@ class UserDeleteView(LoginRequiredMixin, DeleteView):
             return redirect('login')
         return super().get(request,*args, **kwargs)
 
-# class ChangePasswordView
-
 @login_required
 def profile(request, user_id):
     authorized = False
