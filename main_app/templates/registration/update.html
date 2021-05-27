@@ -5,6 +5,9 @@
 <form class="hike-form" action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input class="action-button" type="submit" value="Update">
+    <div class="update-options">
+        <input class="action-button" type="submit" value="Update">
+        <a href="{% url 'password_change' %}">Change password</a>
+    </div>
 </form>
 {% endblock %}

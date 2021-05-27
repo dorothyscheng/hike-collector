@@ -11,8 +11,8 @@
             <div class="user-stats">
                 <p>Favorites: {{ user.profile.favorites.all | length }}</p>
                 <p>Completed: {{ user.profile.completed.all | length }}</p>
-                <p>Reviews: {{ user.profile.reviews_set.all | length }}</p>
-                <p>Photos: {{ user.profile.photos_set.all | length }}</p>
+                <p>Reviews: {{ user.review_set.all | length }}</p>
+                <p>Photos: {{ user.photo_set.all | length }}</p>
             </div>
         </div>
     </a>

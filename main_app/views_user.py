@@ -1,6 +1,6 @@
 from django.views.generic.edit import DeleteView
 from django.contrib.auth.models import User
-from .forms import SignUpForm
+from .forms import SignUpForm, UserUpdateForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -34,6 +34,8 @@ class UserDeleteView(LoginRequiredMixin, DeleteView):
             return redirect('login')
         return super().get(request,*args, **kwargs)
 
+# class ChangePasswordView
+
 @login_required
 def profile(request, user_id):
     authorized = False
@@ -56,9 +58,9 @@ def update_user(request, user_id):
     user = User.objects.get(pk=user_id)
     if request.user == user:
         if request.method == 'GET':
-            form = SignUpForm(instance=user)
+            form = UserUpdateForm(instance=user)
         if request.method == 'POST':
-            form = SignUpForm(request.POST, instance=user)
+            form = UserUpdateForm(request.POST, instance=user)
             if form.is_valid():
                 form.save()
                 login(request, user)

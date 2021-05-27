@@ -35,7 +35,7 @@ class Photo(models.Model):
     hike = models.ForeignKey(Hike, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
-        return f'Photo for {self.hike} @ {self.url}'
+        return f'Photo for {self.hike} by {self.user}'
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

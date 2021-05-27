@@ -430,3 +430,13 @@ textarea {
     font-size: 18px;
     align-items: flex-end;
 }
+.update-options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-weight: normal;
+}
+.update-options a {
+    margin-top: 20px;
+}
