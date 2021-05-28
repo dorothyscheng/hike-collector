@@ -67,10 +67,41 @@ a {
     justify-content: center;
     transition: background-image 1s ease-in-out;
 }
+.activity-container {
+    display: flex;
+    overflow-x: auto;
+    width: 80%;
+    margin: 0 auto;
+}
+.activity-div {
+    height: 300px;
+    width: 300px;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+.activity-img {
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+
+}
+.activity-filter-form {
+    display:none;
+}
+.activity-title {
+    margin-top: 10px;
+}
 /* INDEX */
 .index-container {
     display: flex;
     flex-direction: column;
+}
+.no-hikes-message {
+    font-size: 20px;
 }
 .filter-div {
     display: flex;
@@ -421,6 +452,7 @@ textarea {
 }
 .profile-title {
     margin-left: 200px;
+    margin-bottom: 20px;
     font-size: 27px;
 }
 .profile-section-nav {

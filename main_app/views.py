@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 import uuid
 import boto3
-from .models import Hike, Photo
+from .models import Hike, Photo, Activity
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from .filters import HikeFilter
+from .filters import HikeFilter, ActivityFilter
 from .forms import HikeForm
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
@@ -14,9 +14,13 @@ BUCKET = 'hikecollector'
 # Create your views here.
 def home(request):
     top_hikes = Hike.objects.exclude(average_rating=None).order_by('-average_rating')[:4]
+    all_activities = Activity.objects.all()
+    activity_filter = ActivityFilter()
     context = {
         'top_hikes': top_hikes,
         'range': range(5),
+        'filter': activity_filter,
+        'activities': all_activities,
     }
     return render(request, 'home.html', context)
 

@@ -86,7 +86,7 @@
     {% for photo in selected.photo_set.all %}
         <img class="detail-photo" src="{{ photo.url }}">
     {% empty %}
-        <div>No Photos Uploaded</div>
+        <div>No photos found</div>
     {% endfor %}
 </div>
 {% include 'partials/photo_modal.html' %}
@@ -107,7 +107,7 @@
             <p class="description">{{ review.review }}</p>
         </div>
     {% empty %}
-            <div>No Reviews Submitted</div><br />
+            <div>No reviews found</div><br />
     {% endfor %}
 </div>
 <br />

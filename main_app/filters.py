@@ -24,4 +24,9 @@ class HikeFilter(django_filters.FilterSet):
     difficulty = django_filters.MultipleChoiceFilter(choices = DIFFICULTY_CHOICES, widget = forms.CheckboxSelectMultiple)
     class Meta:
         model = Hike
-        fields = ['name', 'location','state','route_type','difficulty']
+        fields = ['name', 'location','state','route_type','difficulty','activities']
+
+class ActivityFilter(django_filters.FilterSet):
+    class Meta:
+        model = Hike
+        fields = ['activities']
