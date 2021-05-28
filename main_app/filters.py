@@ -9,8 +9,6 @@ class HikeFilter(django_filters.FilterSet):
     location = django_filters.CharFilter(lookup_expr='icontains', label='Park Name')
     state = django_filters.CharFilter(lookup_expr='iexact')
     rating_gte = django_filters.NumberFilter(field_name='average_rating', lookup_expr='gte', label = 'Rating')
-    # length_gte = django_filters.NumberFilter(field_name='length', lookup_expr='gte', label='Min Length')
-    # length_lte = django_filters.NumberFilter(field_name='length', lookup_expr='lte', label='Max Length')
     length = django_filters.RangeFilter(field_name='length')
     ROUTE_TYPE_CHOICES = [
         ('LP', 'Loop'),
