@@ -35,7 +35,12 @@ def index(request):
 
 def detail(request, hike_id):
     selected_hike = get_object_or_404(Hike, pk=hike_id)
-    context = { 'selected': selected_hike, 'range': range(5) }
+    all_activities = Activity.objects.filter(hike=selected_hike)
+    context = { 
+        'selected': selected_hike, 
+        'range': range(5),
+        'activities': all_activities,
+    }
     return render(request, 'hikes/detail.html', context)
 
 class HikeCreateView(LoginRequiredMixin, CreateView):

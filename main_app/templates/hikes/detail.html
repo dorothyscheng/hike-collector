@@ -21,6 +21,10 @@
             <p>{{ selected.length }} miles</p>
         </div>
         <div class="detail-item">
+            <span class="detail-title">Elevation change:</span>
+            <p>{{ selected.elevation_gain }} feet</p>
+        </div>
+        <div class="detail-item">
             <span class="detail-title">Route type:</span>
             <p>{{ selected.get_route_type_display }}</p>
         </div>
@@ -76,6 +80,16 @@
         <a class="action-button delete" href="{% url 'hikes:delete' selected.id %}">Delete</a>
     </div>
 </div>
+<div class="hike-detail-container">
+    <div class="activity-detail-list">
+        {% for activity in activities %}
+            <div class="activity-name">{{ activity }}</div>
+        {% empty %}
+            <div>No activities found</div>
+        {% endfor %}
+    </div>
+</div>
+<br />
 <form class="photo-form" enctype="multipart/form-data" action="{% url 'hikes:add_photo' selected.id %}" method="POST">
     {% csrf_token %}
     <h2 class="detail-subtitle">Photos</h2>
