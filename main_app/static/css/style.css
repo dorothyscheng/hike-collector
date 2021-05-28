@@ -67,11 +67,22 @@ a {
     justify-content: center;
     transition: background-image 1s ease-in-out;
 }
+.activity-scroll {
+    display: flex;
+    align-items: center;
+}
 .activity-container {
     display: flex;
-    overflow-x: auto;
+    overflow: auto;
     width: 80%;
     margin: 0 auto;
+    overflow: -moz-scrollbars-none;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.activity-container::-webkit-scrollbar {
+    width: 0;
+    display: none;
 }
 .activity-div {
     height: 300px;
@@ -86,8 +97,9 @@ a {
     border-radius: 50%;
     width: 250px;
     height: 250px;
-    object-fit: cover;
-
+    background-image: url("https://images.unsplash.com/uploads/1412533519888a485b488/bb9f9777?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+    background-size: cover;
+    background-position: center;
 }
 .activity-filter-form {
     display:none;
@@ -513,4 +525,71 @@ textarea {
 }
 .update-options a {
     margin-top: 20px;
+}
+/* ACTIVITY PHOTOS */
+.Mountain {
+    background-image: url("https://images.unsplash.com/photo-1575548393466-0df1618ba410?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80");
+}
+.Running {
+    background-image: url("https://images.unsplash.com/photo-1580058572462-98e2c0e0e2f0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80");
+}
+.Backpacking {
+    background-image: url("https://images.unsplash.com/photo-1614367928972-ac87fe3d5e4b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmFja3BhY2tpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Walking {
+    background-image: url("https://images.unsplash.com/photo-1572015653901-313e493edc82?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8d2Fsa2luZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Road {
+    background-image: url("https://images.unsplash.com/photo-1567353737043-a8b964c398a4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHJvYWQlMjBiaWtpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Off {
+    background-image: url("https://images.unsplash.com/photo-1575252485516-19b1b089dd9f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Zm91ciUyMHdoZWVsZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Camping {
+    background-image: url("https://images.unsplash.com/photo-1537225228614-56cc3556d7ed?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNhbXBpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Bird {
+    background-image: url("https://images.unsplash.com/photo-1560951750-1e85780f946b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmlyZCUyMHdhdGNoaW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Horseback {
+    background-image: url("https://images.unsplash.com/photo-1609128231746-356e747a53bc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG9yc2ViYWNrJTIwcmlkaW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Nature {
+    background-image: url("https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fG5hdHVyZSUyMHRyaXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Fishing {
+    background-image: url("https://images.unsplash.com/photo-1583249598754-b7a2f59651fb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZmlzaGluZ3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Snowshoeing {
+    background-image: url("https://images.unsplash.com/photo-1579603610583-316ceee0629e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c25vd3Nob2Vpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Scenic {
+    background-image: url("https://images.unsplash.com/photo-1581741883196-605d6e35cb9e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHNjZW5pYyUyMGRyaXZlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Climbing {
+    background-image: url("https://images.unsplash.com/photo-1522163182402-834f871fd851?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cm9jayUyMGNsaW1iaW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Paddle {
+    background-image: url("https://images.unsplash.com/photo-1590574228124-41716e656988?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8a2F5YWt8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Skiing {
+    background-image: url("https://images.unsplash.com/photo-1516352267226-f5f3e4c53781?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8c2tpaW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Cross {
+    background-image: url("https://images.unsplash.com/photo-1518775053278-5a569f0be353?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y3Jvc3MlMjBjb3VudHJ5JTIwc2tpaW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Touring {
+    background-image: url("https://images.unsplash.com/photo-1582556103222-69d09785392a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8YmlrZSUyMHRvdXJpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.Via {
+    background-image: url("https://images.unsplash.com/photo-1543688531-441b5e0d2004?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dmlhJTIwZmVycmF0YXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+}
+.home-arrow {
+    color: #00003f;
+    opacity: .4;
+    transition: opacity .5s;
+}
+.home-arrow:hover {
+    opacity: 1;
+    color: #00003f;
 }

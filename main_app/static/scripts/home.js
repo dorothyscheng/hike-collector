@@ -31,5 +31,26 @@ function activityDisplay() {
     $activityDivs.on('click',selectActivity);
 };
 
-changePhoto()
-activityDisplay()
+function leftScroll() {
+    activityScroll(-1);
+};
+
+function rightScroll() {
+    activityScroll(1);
+};
+
+function activityScroll(direction) {
+    const $activityContainer = $('#activity-container');
+    const width = $activityContainer.width();
+    const currentPosition = $activityContainer.scrollLeft();
+    $activityContainer.animate(
+        {scrollLeft: currentPosition+((width*.9)*direction)},
+        800
+    );
+};
+
+$('#right').on('click',rightScroll)
+$('#left').on('click',leftScroll)
+
+changePhoto();
+activityDisplay();
