@@ -5,6 +5,12 @@ from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 
 # Create your models here.
+class Activity(models.Model):
+    activity = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.activity
+
 class Hike(models.Model):
     name = models.CharField(max_length = 50, unique=True)
     location = models.CharField(max_length = 50)
@@ -25,6 +31,7 @@ class Hike(models.Model):
         ('H', 'Hard'),
     )
     difficulty = models.CharField(max_length=1, choices=DIFFICULTY_CHOICES)
+    activities = models.ManyToManyField(Activity)
     def __str__(self):
         return self.name
     def get_absolute_url(self):

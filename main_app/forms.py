@@ -1,5 +1,6 @@
 # reference: https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html
-from .models import Review
+from django.forms.widgets import MediaDefiningClass
+from .models import Review, Hike, Activity
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -24,3 +25,12 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ('rating','review')
+
+class HikeForm(forms.ModelForm):
+    class Meta:
+        model = Hike
+        fields = ['name', 'location', 'state', 'description', 'activities', 'length', 'elevation_gain', 'route_type', 'difficulty']
+    activities = forms.ModelMultipleChoiceField(
+        queryset=Activity.objects.all(),
+        widget=forms.CheckboxSelectMultiple
+    )

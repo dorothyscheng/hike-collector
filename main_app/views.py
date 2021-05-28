@@ -6,6 +6,7 @@ from .models import Hike, Photo
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from .filters import HikeFilter
+from .forms import HikeForm
 
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'hikecollector'
@@ -35,12 +36,12 @@ def detail(request, hike_id):
 
 class HikeCreateView(LoginRequiredMixin, CreateView):
     model = Hike
-    fields = ['name', 'location', 'state', 'description', 'length', 'elevation_gain', 'route_type', 'difficulty']
+    form_class = HikeForm
     template_name = 'hikes/hike_form.html'
 
 class HikeUpdateView(LoginRequiredMixin, UpdateView):
     model = Hike
-    fields = ['name', 'location', 'state', 'description', 'length', 'elevation_gain', 'route_type', 'difficulty']
+    form_class = HikeForm
     template_name = 'hikes/hike_form.html'
 
 class HikeDeleteView(LoginRequiredMixin, DeleteView):
