@@ -29,8 +29,8 @@ class ReviewForm(forms.ModelForm):
 class HikeForm(forms.ModelForm):
     class Meta:
         model = Hike
-        fields = ['name', 'location', 'state', 'description', 'activities', 'length', 'elevation_gain', 'route_type', 'difficulty']
+        fields = ['name', 'location', 'state', 'description', 'length', 'elevation_gain', 'route_type', 'difficulty','activities']
     activities = forms.ModelMultipleChoiceField(
-        queryset=Activity.objects.all(),
+        queryset=Activity.objects.all().order_by('activity'),
         widget=forms.CheckboxSelectMultiple
     )
