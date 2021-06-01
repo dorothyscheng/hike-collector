@@ -1,5 +1,10 @@
 # Hike Collector
 
+## Objective
+Create a site to catalog hiking trails, based off AllTrails.com
+
+[Visit the HikeCollector site](https://hikecollector.herokuapp.com/)
+
 ## User Stories
 - On the home page, user will see top rated hikes and links to search by activity type.
 - Users can filter hikes by hike name, park name, state, route type, difficulty, activites, rating, and length.
