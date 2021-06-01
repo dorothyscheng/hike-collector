@@ -1,21 +1,17 @@
-# Finch Collector - Views and Templates
+# Hike Collector
 
-The lab for this lesson is repeating everything we just did, except you'll collect something else like Finches and call the project something like finchcollector, or whatever.
+## User Stories
+- On the home page, user will see top rated hikes and links to search by activity type.
+- Users can filter hikes by hike name, park name, state, route type, difficulty, activites, rating, and length.
+- User can see details about each hike including distance, elevation change, route type, average rating, difficulty level, description, and activity categories.
+- User can create and log into an account which allows them to mark hikes as favorites, completed, and submit reviews or photos for hikes. Users can view these through their profile page.
+- Users can add and edit hikes, reviews, and photos.
 
-- Fork and clone this repo
-- Pick a reource. (Dogs, Cards, Stamps, etc)
-- Initialize your project. (Do not forget your .env)
-- Create your db. 
-- Configure your application to connect to the db.
-(Dont forget to use startapp to get your application folder and include it in your settings.py)
-- Create a home route, about route, and index route. 
-- Create a template view that extends a base for all the routes. 
+## Technologies Used
+- Django web framework
+- HTML, CSS, Javascript
+- Deployed using Heroku
 
-
-Because your completed Finch Collector app will be fairly comprehensive and be a nice addition to your portfolio, you should **create it outside of the class repo** so that you can make it a repo in your personal GitHub account.
-
-## References
-
-[Django Template Docs](https://docs.djangoproject.com/en/3.0/ref/templates/builtins/)
-
-[Django Static Files](https://docs.djangoproject.com/en/3.0/howto/static-files/)
+## Future Development
+- Add a map feature to display actual hike locations
+- Additional user permissions for adding/editing hikes
