@@ -230,3 +230,4 @@ Thumbs.db
 
 # End of https://www.toptal.com/developers/gitignore/api/python,djangohike_collector_project/.env
 
+hike_collector_project/.env
