@@ -127,6 +127,7 @@ ENV/
 env.bak/
 venv.bak/
 pythonenv*
+hike_collector_project/.env
 
 # Spyder project settings
 .spyderproject
@@ -228,4 +229,5 @@ Thumbs.db
 # profiling data
 
 
-# End of https://www.toptal.com/developers/gitignore/api/python,django
+# End of https://www.toptal.com/developers/gitignore/api/python,djangohike_collector_project/.env
+
