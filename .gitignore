@@ -127,7 +127,6 @@ ENV/
 env.bak/
 venv.bak/
 pythonenv*
-hike_collector_project/.env
 
 # Spyder project settings
 .spyderproject
